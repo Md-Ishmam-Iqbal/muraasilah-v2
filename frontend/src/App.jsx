@@ -1,3 +1,5 @@
+import Auth from "./Pages/Auth";
+
 function App() {
   return (
     <>
@@ -7,6 +9,7 @@ function App() {
         <div>search chat</div>
         <div className="hover-drop-shadow">profile name</div>
       </nav>
+      <Auth />
       <main>
         <header>
           <div className="title hover-drop-shadow">Messaging App</div>
