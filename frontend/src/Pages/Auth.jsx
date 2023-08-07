@@ -2,17 +2,18 @@ import SignInForm from "../Components/SignInForm";
 import SignupForm from "../Components/SignupForm";
 
 const styles = {
-  label: "",
-  inputFields: "",
-  button: "",
+  label: "block pt-4",
+  inputFields:
+    "text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-2 w-full",
+  button: "common-btn",
   errorMsg: "",
 };
 
-const Auth = ({ styles }) => {
+const Auth = () => {
   return (
     <div>
-      {/* <SignInForm styles={styles} /> */}
-      <SignupForm styles={styles} />
+      <SignInForm styles={styles} />
+      {/* <SignupForm styles={styles} /> */}
     </div>
   );
 };

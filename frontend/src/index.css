@@ -29,7 +29,7 @@ a {
     .wrapper {
         border-color: slate-500;
         border-width: 2px;
-        padding: 40px 80px;
+        padding: 80px 200px;
     }
     .form-wrapper {
         display: flex;
@@ -40,6 +40,7 @@ a {
         color: #fff;
         background-color: #4f46e5;
         padding: 0.5rem 1.25rem;
-        margin: 1.25rem 0;
+        margin: 1.5rem 2.75rem;
+        border-radius: 4px;
     }
 }

@@ -3,6 +3,7 @@
 ## Functional requirements:
 
 - User must be able to send and receive messages realtime (Use websockets)
+<!-- - Later implement sending of different file types and images -->
 - Messaging history need to be stored
 - User must be able to login (Implement proper authentication OAuth or JSON web token)
 - End to end Message encryption for additional security
@@ -22,7 +23,6 @@
 - Routes:
   - Dashboard where all past chats is displayed
   - Chat page with certain individual if clicked on their profile
-  - Profile
 - Formik for forms, YUP for FE validation
 
 ## BE

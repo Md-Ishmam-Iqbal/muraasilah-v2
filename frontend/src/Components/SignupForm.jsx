@@ -1,10 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
-const SignupForm = () => {
+const SignupForm = ({ styles }) => {
   return (
     <main className="center">
       <section className="wrapper">
-        <h1 className="text-4xl">Sign Up</h1>
+        <h1 className="flex items-center justify-center text-4xl">Sign Up</h1>
         <Formik
           initialValues={{
             email: "",
@@ -17,20 +17,30 @@ const SignupForm = () => {
           }}
         >
           <Form className="form-wrapper">
-            <label htmlFor="email">Email address</label>
-            <Field name="email" type="email" />
-            {/* <ErrorMessage name="email" /> */}
+            <label className={styles.label} htmlFor="email">
+              Email address
+            </label>
+            <Field name="email" type="email" className={styles.inputFields} />
 
-            <label htmlFor="lastName">Username</label>
-            <Field name="username" type="text" />
+            <label className={styles.label} htmlFor="lastName">
+              Username
+            </label>
+            <Field name="username" type="text" className={styles.inputFields} />
 
-            <label>Password</label>
-            <Field name="password" type="password" />
+            <label className={styles.label}>Password</label>
+            <Field
+              name="password"
+              type="password"
+              className={styles.inputFields}
+            />
 
-            <label>Confirm password</label>
-            <Field name="confirm_password" type="password" />
-
-            <button type="submit" className="common-btn">
+            <label className={styles.label}>Confirm password</label>
+            <Field
+              name="confirm_password"
+              type="password"
+              className={styles.inputFields}
+            />
+            <button type="submit" className={styles.button}>
               Sign Up
             </button>
           </Form>
