@@ -3,8 +3,8 @@ import SignUp from "../Components/SignUp";
 
 const Auth = () => {
   return (
-    <div className="bg-slate-200">
-      <SignIn />
+    <div>
+      {/* <SignIn /> */}
       <SignUp />
     </div>
   );

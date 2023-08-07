@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .center {
+        width: full;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .wrapper {
+        border-color: slate-500;
+        border-width: 2px;
+        padding: 40px 80px;
+    }
+    .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .common-btn {
+        color: #fff;
+        background-color: #4f46e5;
+        padding: 0.5rem 1.25rem;
+        margin: 1.25rem 0;
+    }
+}
