@@ -1,11 +1,18 @@
-import SignIn from "../Components/SignIn";
-import SignUp from "../Components/SignUp";
+import SignInForm from "../Components/SignInForm";
+import SignupForm from "../Components/SignupForm";
 
-const Auth = () => {
+const styles = {
+  label: "",
+  inputFields: "",
+  button: "",
+  errorMsg: "",
+};
+
+const Auth = ({ styles }) => {
   return (
     <div>
-      {/* <SignIn /> */}
-      <SignUp />
+      {/* <SignInForm styles={styles} /> */}
+      <SignupForm styles={styles} />
     </div>
   );
 };

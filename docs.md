@@ -15,7 +15,6 @@
 - React
 - Tailiwind CSS
 - React router for routing
-- Formik for forms
 
 #### FE components
 
@@ -24,6 +23,7 @@
   - Dashboard where all past chats is displayed
   - Chat page with certain individual if clicked on their profile
   - Profile
+- Formik for forms, YUP for FE validation
 
 ## BE
 
