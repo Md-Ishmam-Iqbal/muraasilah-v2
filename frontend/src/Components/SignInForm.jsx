@@ -1,4 +1,6 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
+import { MyTextInput } from "./FormElements";
+import { AuthValidationSchema } from "../lib/formValidation";
 
 const SignInForm = ({ styles }) => {
   return (
@@ -11,24 +13,26 @@ const SignInForm = ({ styles }) => {
             username: "",
             password: "",
             confirm_password: "",
+            acceptedTerms: false,
           }}
+          validationSchema={AuthValidationSchema}
           onSubmit={(values) => {
             console.log(values);
           }}
         >
           <Form className="form-wrapper">
-            <label className={styles.label} htmlFor="email">
-              Email address
-            </label>
-            <Field name="email" type="email" className={styles.inputFields} />
-
-            <label className={styles.label}>Password</label>
-            <Field
+            <MyTextInput
+              styles={styles}
+              label="Email Address"
+              name="email"
+              type="email"
+            />
+            <MyTextInput
+              styles={styles}
+              label="Password"
               name="password"
               type="password"
-              className={styles.inputFields}
             />
-
             <button type="submit" className={styles.button}>
               Sign In
             </button>
