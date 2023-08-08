@@ -8,27 +8,30 @@
 - User must be able to login (Implement proper authentication OAuth or JSON web token)
 - End to end Message encryption for additional security
 
+## Other requirements
+
 - Data validation on both FE and BE
 - Dockerize the app
+- Automated Testing to ensure quality and maintainability
 
 ## FE
 
 - React
 - Tailiwind CSS
 - React router for routing
+- Formik for forms, YUP for FE validation
 
 #### FE components
 
 - Sidebar/Navbar for navigating
 - Routes:
-  - Dashboard where all past chats is displayed
-  - Chat page with certain individual if clicked on their profile
-- Formik for forms, YUP for FE validation
+  - Dashboard where all past chats are displayed
+  - Chat with another user if clicked on their profile
 
 ## BE
 
 - Websockets with NodeJs (socket.io)
-- Express for server
+- Express
 - Testing for api
 
 ## DB
