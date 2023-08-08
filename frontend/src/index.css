@@ -19,7 +19,7 @@ a {
 @tailwind utilities;
 
 @layer components {
-    .center {
+    .centerPage {
         width: full;
         height: 100vh;
         display: flex;
@@ -27,8 +27,6 @@ a {
         align-items: center;
     }
     .wrapper {
-        border-color: slate-500;
-        border-width: 2px;
         padding: 80px 200px;
     }
     .form-wrapper {

@@ -1,10 +1,11 @@
 import { Formik, Form } from "formik";
-import { MyTextInput } from "./FormElements";
-import { AuthValidationSchema } from "../lib/formValidation";
 
-const SignupForm = ({ styles }) => {
+import { MyCheckbox, MyTextInput } from "./FormElements";
+import { SignUpValidationSchema } from "../lib/formValidation";
+
+const SignupForm = ({ styles, togglePage }) => {
   return (
-    <main className="center">
+    <main className="centerPage">
       <section className="wrapper">
         <h1 className="flex items-center justify-center text-4xl">Sign Up</h1>
         <Formik
@@ -15,7 +16,7 @@ const SignupForm = ({ styles }) => {
             confirm_password: "",
             acceptedTerms: false,
           }}
-          validationSchema={AuthValidationSchema}
+          validationSchema={SignUpValidationSchema}
           onSubmit={(values) => {
             console.log(values);
           }}
@@ -45,13 +46,18 @@ const SignupForm = ({ styles }) => {
               name="confirm_password"
               type="password"
             />
-            <button type="submit" className={styles.button}>
+            <MyCheckbox name="acceptedTerms" styles={styles}>
+              {" "}
+              I accept the terms and conditions
+            </MyCheckbox>
+            <button type="submit" className="common-btn">
               Sign Up
             </button>
           </Form>
         </Formik>
-        <p>
-          Already have an account? <span>Sign In</span>
+        <p className="flex items-center justify-center">
+          Already have an account?&nbsp;
+          <span onClick={() => togglePage()}>Sign In</span>
         </p>
       </section>
     </main>

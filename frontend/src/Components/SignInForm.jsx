@@ -1,10 +1,11 @@
 import { Formik, Form } from "formik";
-import { MyTextInput } from "./FormElements";
-import { AuthValidationSchema } from "../lib/formValidation";
 
-const SignInForm = ({ styles }) => {
+import { MyTextInput } from "./FormElements";
+import { SignInValidationSchema } from "../lib/formValidation";
+
+const SignInForm = ({ styles, togglePage }) => {
   return (
-    <main className="center">
+    <main className="centerPage">
       <section className="wrapper">
         <h1 className="flex items-center justify-center text-4xl">Sign In</h1>
         <Formik
@@ -15,7 +16,7 @@ const SignInForm = ({ styles }) => {
             confirm_password: "",
             acceptedTerms: false,
           }}
-          validationSchema={AuthValidationSchema}
+          validationSchema={SignInValidationSchema}
           onSubmit={(values) => {
             console.log(values);
           }}
@@ -33,13 +34,14 @@ const SignInForm = ({ styles }) => {
               name="password"
               type="password"
             />
-            <button type="submit" className={styles.button}>
+            <button type="submit" className="common-btn">
               Sign In
             </button>
           </Form>
         </Formik>
-        <p>
-          Don't have an account? <span>Sign Up</span>
+        <p className="flex items-center justify-center">
+          Don't have an account?&nbsp;
+          <span onClick={() => togglePage()}>Sign Up</span>
         </p>
       </section>
     </main>

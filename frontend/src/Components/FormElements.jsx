@@ -17,4 +17,21 @@ const MyTextInput = ({ styles, label, ...props }) => {
   );
 };
 
-export { MyTextInput };
+const MyCheckbox = ({ styles, children, ...props }) => {
+  const [field] = useField({ ...props, type: "checkbox" });
+  return (
+    <div className={styles.checkBox}>
+      <label className="checkbox-input">
+        <input type="checkbox" {...field} {...props} />
+        {children}
+      </label>
+      <ErrorMessage
+        component="div"
+        name={props.name}
+        className={styles.errorMsg}
+      />
+    </div>
+  );
+};
+
+export { MyTextInput, MyCheckbox };
