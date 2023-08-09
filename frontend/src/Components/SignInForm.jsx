@@ -3,7 +3,14 @@ import { Formik, Form } from "formik";
 import { MyTextInput } from "./FormElements";
 import { SignInValidationSchema } from "../lib/formValidation";
 
+import axios from "axios";
+
 const SignInForm = ({ styles, togglePage }) => {
+  const handleSubmit = async (values) => {
+    console.log(values);
+    await axios.post("http://localhost:3000/register", { ...values });
+  };
+
   return (
     <main className="centerPage">
       <section className="wrapper">
@@ -18,7 +25,7 @@ const SignInForm = ({ styles, togglePage }) => {
           }}
           validationSchema={SignInValidationSchema}
           onSubmit={(values) => {
-            console.log(values);
+            handleSubmit(values);
           }}
         >
           <Form className="form-wrapper">

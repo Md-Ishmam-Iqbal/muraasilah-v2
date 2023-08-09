@@ -3,7 +3,15 @@ import { Formik, Form } from "formik";
 import { MyCheckbox, MyTextInput } from "./FormElements";
 import { SignUpValidationSchema } from "../lib/formValidation";
 
+import axios from "axios";
+
 const SignupForm = ({ styles, togglePage }) => {
+  const handleSubmit = async (values) => {
+    const respone = await axios.post("http://localhost:3000/register", {
+      ...values,
+    });
+    console.log(respone.data);
+  };
   return (
     <main className="centerPage">
       <section className="wrapper">
@@ -18,7 +26,7 @@ const SignupForm = ({ styles, togglePage }) => {
           }}
           validationSchema={SignUpValidationSchema}
           onSubmit={(values) => {
-            console.log(values);
+            handleSubmit(values);
           }}
         >
           <Form className="form-wrapper">
