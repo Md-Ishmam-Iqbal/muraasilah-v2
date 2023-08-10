@@ -6,7 +6,23 @@ import User from "../../models/userModel.js";
 // route   POST api/users/auth
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Auth user" });
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  console.log(user);
+
+  if (user && (await user.matchPassword(password))) {
+    generateToken(res, user._id);
+    res.status(201).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
+  }
 });
 
 // @desc   Register a new user
