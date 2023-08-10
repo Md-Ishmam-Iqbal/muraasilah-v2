@@ -4,13 +4,20 @@ import { MyCheckbox, MyTextInput } from "./FormElements";
 import { SignUpValidationSchema } from "../lib/formValidation";
 
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const SignupForm = ({ styles, togglePage }) => {
+  const { setUsername, setId } = useContext(UserContext);
+
   const handleSubmit = async (values) => {
-    const respone = await axios.post("http://localhost:3000/register", {
+    console.log(values);
+    const response = await axios.post("http://localhost:3000/register", {
       ...values,
     });
-    console.log(respone.data);
+    console.log(response);
+    console.log(response.data);
+    setUsername(values.username);
   };
   return (
     <main className="centerPage">
