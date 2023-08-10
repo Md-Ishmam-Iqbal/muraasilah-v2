@@ -36,12 +36,13 @@
 
 #### Routes
 
-- userRoutes
+- **_User Routes_**
   - POST: `/api/users` - register user
   - POST: `/api/users/auth` - authorize registered user and get token
   - POST: `/api/users/logout` - log out user and clear cookie
   - GET: `/api/users/profile` - get user profile
   - POST: `/api/users/profile` - update user profile
+- **_Other Routes_**
 
 ## DB
 

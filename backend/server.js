@@ -3,9 +3,13 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 
-import userRoutes from "./routes/userRoutes.js";
+import connectDB from "./config/db.js";
 
-import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
+import userRoutes from "./src/routes/userRoutes.js";
+
+import { errorHandler, notFound } from "./src/middleware/errorMiddleware.js";
+
+connectDB();
 
 const app = express();
 const port = process.env.PORT || 3000;
