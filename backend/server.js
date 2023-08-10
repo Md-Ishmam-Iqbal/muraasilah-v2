@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 
+import cookieParser from "cookie-parser";
+
 import connectDB from "./config/db.js";
 
 import userRoutes from "./src/routes/userRoutes.js";
@@ -16,6 +18,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 app.use(cors());
 
