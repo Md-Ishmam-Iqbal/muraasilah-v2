@@ -12,12 +12,11 @@ const SignupForm = ({ styles, togglePage }) => {
 
   const handleSubmit = async (values) => {
     console.log(values);
-    const response = await axios.post("http://localhost:3000/register", {
+    const response = await axios.post("http://localhost:3000/api/users", {
       ...values,
     });
     console.log(response);
     console.log(response.data);
-    setUsername(values.username);
   };
   return (
     <main className="centerPage">

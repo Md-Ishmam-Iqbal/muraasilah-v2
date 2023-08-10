@@ -1,6 +1,6 @@
 import express from "express";
-import cors from "cors";
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 
 import connectDB from "./config/db.js";
@@ -14,15 +14,12 @@ connectDB();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use("/api/users", userRoutes);
-
 app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: "http://localhost:5173",
-  })
-);
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
+
+app.use("/api/users", userRoutes);
 
 app.get("/test", (req, res) => {
   res.json("test ok!");
