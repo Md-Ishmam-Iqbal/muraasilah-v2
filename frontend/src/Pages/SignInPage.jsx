@@ -1,14 +1,20 @@
 import { Formik, Form } from "formik";
 
-import { MyTextInput } from "./FormElements";
+import { MyTextInput } from "../components/FormElements";
 import { SignInValidationSchema } from "../lib/formValidation";
 
 import axios from "axios";
 
-const SignInForm = ({ styles, togglePage }) => {
+const SignInPage = ({ styles, togglePage }) => {
   const handleSubmit = async (values) => {
+    console.log("Working");
     console.log(values);
-    await axios.post("http://localhost:3000/register", { ...values });
+    const response = await axios.post("/api/users/auth", {
+      ...values,
+    });
+    if (response) {
+      console.log(response.data);
+    }
   };
 
   return (
@@ -18,13 +24,11 @@ const SignInForm = ({ styles, togglePage }) => {
         <Formik
           initialValues={{
             email: "",
-            username: "",
             password: "",
-            confirm_password: "",
-            acceptedTerms: false,
           }}
           validationSchema={SignInValidationSchema}
           onSubmit={(values) => {
+            console.log("I am working onSubmit");
             handleSubmit(values);
           }}
         >
@@ -55,4 +59,4 @@ const SignInForm = ({ styles, togglePage }) => {
   );
 };
 
-export default SignInForm;
+export default SignInPage;

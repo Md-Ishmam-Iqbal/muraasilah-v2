@@ -1,22 +1,23 @@
 import { Formik, Form } from "formik";
 
-import { MyCheckbox, MyTextInput } from "./FormElements";
+import { MyCheckbox, MyTextInput } from "../components/FormElements";
 import { SignUpValidationSchema } from "../lib/formValidation";
 
 import axios from "axios";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
-const SignupForm = ({ styles, togglePage }) => {
+const SignupPage = ({ styles, togglePage }) => {
   const { setUsername, setId } = useContext(UserContext);
 
   const handleSubmit = async (values) => {
     console.log(values);
-    const response = await axios.post("http://localhost:3000/api/users", {
+    const response = await axios.post("/api/users", {
       ...values,
     });
-    console.log(response);
-    console.log(response.data);
+    if (response) {
+      togglePage();
+    }
   };
   return (
     <main className="centerPage">
@@ -78,4 +79,4 @@ const SignupForm = ({ styles, togglePage }) => {
   );
 };
 
-export default SignupForm;
+export default SignupPage;

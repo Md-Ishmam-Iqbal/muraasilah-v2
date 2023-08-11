@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import SignInForm from "../Components/SignInForm";
-import SignupForm from "../Components/SignupForm";
+import SignInPage from "./SignInPage";
+import SignupPage from "./SignupPage";
 
 const styles = {
   label: "block pt-4",
@@ -12,7 +12,8 @@ const styles = {
 };
 
 const Auth = () => {
-  const initialIsLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // to ensure page reload loads same page
+  const initialIsLoggedIn =
+    JSON.parse(localStorage.getItem("isLoggedIn")) === true;
   const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
 
   const toggleIsLoggedIn = () => {
@@ -26,9 +27,9 @@ const Auth = () => {
   return (
     <div>
       {isLoggedIn ? (
-        <SignInForm styles={styles} togglePage={toggleIsLoggedIn} />
+        <SignInPage styles={styles} togglePage={toggleIsLoggedIn} />
       ) : (
-        <SignupForm styles={styles} togglePage={toggleIsLoggedIn} />
+        <SignupPage styles={styles} togglePage={toggleIsLoggedIn} />
       )}
     </div>
   );
