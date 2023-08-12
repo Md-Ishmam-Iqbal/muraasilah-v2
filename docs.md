@@ -60,3 +60,8 @@
 ## App design:
 
 - [Wireframe](https://whimsical.com/muraasilat-Wd6wZgqnRpEFvQ5Mp2PJdz)
+
+#### Useful resources for authentication
+
+- [Net Ninja MERN auth tutorial](https://youtube.com/playlist?list=PL4cUxeGkcC9g8OhpOZxNdhXggFz2lOuCT)
+- [Traversy Media MERN auth tutorial (uses redux)](https://youtu.be/R4AhvYORZRY)

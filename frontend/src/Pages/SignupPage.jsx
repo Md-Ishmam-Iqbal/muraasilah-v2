@@ -5,11 +5,9 @@ import { SignUpValidationSchema } from "../lib/formValidation";
 
 import axios from "axios";
 import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
+import { AuthContext } from "../context/AuthContext";
 
 const SignupPage = ({ styles, togglePage }) => {
-  const { setUsername, setId } = useContext(UserContext);
-
   const handleSubmit = async (values) => {
     console.log(values);
     const response = await axios.post("/api/users", {
