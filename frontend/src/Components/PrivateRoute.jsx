@@ -1,15 +1,16 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Navbar from "./Navbar";
 
 const PrivateRoute = () => {
   const { user } = useAuthContext();
-
-  console.log(user);
+  const location = useLocation();
+  const isWelcomePage = location.pathname === "/welcome";
 
   return user && user ? (
     <>
-      <Navbar user={user} /> {/* Render the Navbar for private routes */}
+      {!isWelcomePage && <Navbar user={user} />}{" "}
+      {/* Render the Navbar for private routes except WelcomePage*/}
       <Outlet />
     </>
   ) : (

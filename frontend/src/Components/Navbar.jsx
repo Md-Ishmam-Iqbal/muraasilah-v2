@@ -3,10 +3,9 @@ import { useLogout } from "../hooks/useLogout";
 
 const Navbar = ({ user }) => {
   const { logout } = useLogout();
-  console.log(user);
 
   return (
-    <header className="absolute">
+    <header className="pb-10">
       <div>
         <h1 className="p-2 m-4">Muraasilat</h1>
         <nav>
@@ -23,7 +22,7 @@ const Navbar = ({ user }) => {
             <Link to="/profile" className="p-2 m-4 bg-blue-100">
               Profile
             </Link>
-            {user && <button onClick={logout}>Logout</button>}
+            <button onClick={logout}>Logout</button>
           </div>
         </nav>
       </div>

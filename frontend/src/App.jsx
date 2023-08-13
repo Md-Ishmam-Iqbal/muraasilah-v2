@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthContextProvider } from "./context/AuthContext";
-import Welcome from "./pages/Welcome";
+
 import SignInPage from "./pages/SignInPage";
 import SignupPage from "./pages/SignupPage";
+import Welcome from "./pages/Welcome";
+import Dashboard from "./pages/Dashboard";
+
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -27,6 +30,7 @@ function App() {
             />
             <Route path="" element={<PrivateRoute />}>
               <Route path="/welcome" element={<Welcome />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Route>
           </Routes>
         </BrowserRouter>

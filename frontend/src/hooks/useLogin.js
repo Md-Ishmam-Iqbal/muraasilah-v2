@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
+  const navigate = useNavigate();
 
   const login = async (values) => {
     setIsLoading(true);
@@ -24,6 +26,7 @@ export const useLogin = () => {
         dispatch({ type: "LOGIN", payload: response.data });
 
         setIsLoading(false);
+        navigate("/welcome", { state: { isNewUser: false } });
       }
     } catch (error) {
       console.error(error);

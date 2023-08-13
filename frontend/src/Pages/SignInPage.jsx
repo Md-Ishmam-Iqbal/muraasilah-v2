@@ -10,7 +10,9 @@ const SignInPage = ({ styles, togglePage }) => {
   const { login, error, isLoading } = useLogin();
   const navigate = useNavigate();
 
-  const handleSubmit = async (values) => await login(values);
+  const handleSubmit = async (values) => {
+    await login(values);
+  };
   return (
     <main className="centerPage">
       <section className="wrapper">

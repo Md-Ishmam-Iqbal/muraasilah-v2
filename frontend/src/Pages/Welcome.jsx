@@ -1,15 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Welcome = () => {
-  const [isNewUser, setIsNewUser] = useState(null);
+  const { user } = useAuthContext();
+  const username = user.username;
+  console.log("welcome page: ", username);
+  const location = useLocation();
+  const { isNewUser } = location.state || {};
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Animate the letters on page load
     gsap.fromTo(
       ".welcome-letter",
       { opacity: 0, x: -1 },
-      { opacity: 0.8, x: 0, duration: 0.5, stagger: 0.2 }
+      { opacity: 1, x: 0, duration: 0.5, stagger: 0.1 }
     );
   }, []);
 
@@ -23,19 +30,19 @@ const Welcome = () => {
 
   return (
     <main className="centerPage">
-      <div>
+      <div className="w-full text-center">
         {isNewUser ? (
-          <h1 className="text-6xl font-light text-slate-900 tracking-normal uppercase">
+          <h1 className="text-6xl font-light tracking-normal uppercase">
             {/* Wrap each letter in a span with a specific class */}
-            {createLetterElements("Welcome to Muraasilat, User.")}
+            {createLetterElements(`Welcome to Muraasilat, ${username}.`)}
           </h1>
         ) : (
           <h1 className="text-6xl font-light text-slate-900 tracking-normal uppercase">
-            {createLetterElements("Welcome Back, User.")}
+            {createLetterElements(`Welcome Back, ${username}.`)}
           </h1>
         )}
-        <button className="common-btn" onClick={() => setIsNewUser(!isNewUser)}>
-          Test newUser
+        <button className="common-btn" onClick={() => navigate("/dashboard")}>
+          To Dashboard{" "}
         </button>
       </div>
     </main>
