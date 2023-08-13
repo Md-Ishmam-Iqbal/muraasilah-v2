@@ -1,15 +1,16 @@
 import { Formik, Form } from "formik";
 
-import { MyTextInput } from "./FormElements";
+import { MyTextInput } from "../components/FormElements";
 import { SignInValidationSchema } from "../lib/formValidation";
 
 import { useLogin } from "../hooks/useLogin";
+import { useNavigate } from "react-router-dom";
 
 const SignInPage = ({ styles, togglePage }) => {
   const { login, error, isLoading } = useLogin();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values) => await login(values);
-
   return (
     <main className="centerPage">
       <section className="wrapper">
@@ -45,7 +46,7 @@ const SignInPage = ({ styles, togglePage }) => {
         </Formik>
         <p className="flex items-center justify-center">
           Don't have an account?&nbsp;
-          <span onClick={() => togglePage()}>Sign Up</span>
+          <span onClick={() => navigate("/register")}>Sign Up</span>
         </p>
       </section>
     </main>
