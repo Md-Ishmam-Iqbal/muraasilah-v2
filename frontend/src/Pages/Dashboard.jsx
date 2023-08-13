@@ -1,5 +1,11 @@
+import DashboardShell from "../components/DashboardShell";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <DashboardShell />
+    </div>
+  );
 };
 
 export default Dashboard;

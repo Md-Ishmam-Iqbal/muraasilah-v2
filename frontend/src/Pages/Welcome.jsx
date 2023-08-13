@@ -34,7 +34,7 @@ const Welcome = () => {
         {isNewUser ? (
           <h1 className="text-6xl font-light tracking-normal uppercase">
             {/* Wrap each letter in a span with a specific class */}
-            {createLetterElements(`Welcome to Muraasilat, ${username}.`)}
+            {createLetterElements(`Welcome to Muraasilah, ${username}.`)}
           </h1>
         ) : (
           <h1 className="text-6xl font-light text-slate-900 tracking-normal uppercase">
