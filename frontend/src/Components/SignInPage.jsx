@@ -1,21 +1,14 @@
 import { Formik, Form } from "formik";
 
-import { MyTextInput } from "../components/FormElements";
+import { MyTextInput } from "./FormElements";
 import { SignInValidationSchema } from "../lib/formValidation";
 
-import axios from "axios";
+import { useLogin } from "../hooks/useLogin";
 
 const SignInPage = ({ styles, togglePage }) => {
-  const handleSubmit = async (values) => {
-    console.log("Working");
-    console.log(values);
-    const response = await axios.post("/api/users/auth", {
-      ...values,
-    });
-    if (response) {
-      console.log(response.data);
-    }
-  };
+  const { login, error, isLoading } = useLogin();
+
+  const handleSubmit = async (values) => await login(values);
 
   return (
     <main className="centerPage">
@@ -28,7 +21,6 @@ const SignInPage = ({ styles, togglePage }) => {
           }}
           validationSchema={SignInValidationSchema}
           onSubmit={(values) => {
-            console.log("I am working onSubmit");
             handleSubmit(values);
           }}
         >
@@ -45,7 +37,8 @@ const SignInPage = ({ styles, togglePage }) => {
               name="password"
               type="password"
             />
-            <button type="submit" className="common-btn">
+            {error && <div className={styles.errorMsg}>{error}</div>}
+            <button disabled={isLoading} type="submit" className="common-btn">
               Sign In
             </button>
           </Form>

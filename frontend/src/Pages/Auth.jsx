@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
-import SignInPage from "./SignInPage";
-import SignupPage from "./SignupPage";
+import SignInPage from "../components/SignInPage";
+import SignupPage from "../components/SignupPage";
+import { useLogout } from "../hooks/useLogout";
 
-const styles = {
+const formStyles = {
   label: "block pt-4",
   inputFields:
     "text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-1 px-2 w-full",
@@ -12,25 +13,34 @@ const styles = {
 };
 
 const Auth = () => {
-  const initialIsLoggedIn =
-    JSON.parse(localStorage.getItem("isLoggedIn")) === true;
-  const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
+  const { logout } = useLogout();
+  const handleLogout = () => {
+    logout();
+  };
+  const initialIsSignedUp =
+    JSON.parse(localStorage.getItem("signedUp")) === true;
+  const [isSignedUp, setIsSignedUp] = useState(initialIsSignedUp);
 
-  const toggleIsLoggedIn = () => {
-    setIsLoggedIn(!isLoggedIn);
+  const toggleIsSignedUp = () => {
+    setIsSignedUp(!isSignedUp);
   };
 
   useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn); // update localStorage value on change
-  }, [isLoggedIn]);
+    localStorage.setItem("signedUp", isSignedUp); // update localStorage value on change
+  }, [isSignedUp]);
 
   return (
     <div>
-      {isLoggedIn ? (
-        <SignInPage styles={styles} togglePage={toggleIsLoggedIn} />
+      {isSignedUp ? (
+        <SignInPage styles={formStyles} togglePage={toggleIsSignedUp} />
       ) : (
-        <SignupPage styles={styles} togglePage={toggleIsLoggedIn} />
+        <SignupPage styles={formStyles} togglePage={toggleIsSignedUp} />
       )}
+      <div>
+        <button onClick={handleLogout} className="w-full bg-blue-100 py-6">
+          Logout
+        </button>
+      </div>
     </div>
   );
 };

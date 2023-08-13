@@ -1,22 +1,15 @@
 import { Formik, Form } from "formik";
 
-import { MyCheckbox, MyTextInput } from "../components/FormElements";
+import { MyCheckbox, MyTextInput } from "./FormElements";
 import { SignUpValidationSchema } from "../lib/formValidation";
 
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useSignup } from "../hooks/useSignUp";
 
 const SignupPage = ({ styles, togglePage }) => {
-  const handleSubmit = async (values) => {
-    console.log(values);
-    const response = await axios.post("/api/users", {
-      ...values,
-    });
-    if (response) {
-      togglePage();
-    }
-  };
+  const { signup, error, isLoading } = useSignup();
+
+  const handleSubmit = async (values) => await signup(values);
+
   return (
     <main className="centerPage">
       <section className="wrapper">
@@ -63,7 +56,8 @@ const SignupPage = ({ styles, togglePage }) => {
               {" "}
               I accept the terms and conditions
             </MyCheckbox>
-            <button type="submit" className="common-btn">
+            {error && <div className={styles.errorMsg}>{error}</div>}
+            <button type="submit" className="common-btn" disabled={isLoading}>
               Sign Up
             </button>
           </Form>
