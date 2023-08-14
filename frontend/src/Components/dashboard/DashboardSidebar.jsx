@@ -18,7 +18,7 @@ const DashboardSidebar = () => {
           placeholder="Search for chat"
         />
       </section>
-      <section className="bg-red-50 grow h-full">
+      <section className="bg-red-50 grow">
         <ChatPreview
           avatar={
             <UserCircleIcon className="h-8 w-8 stroke-2 mx-2 fill-slate-400" />
