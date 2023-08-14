@@ -1,10 +1,13 @@
-import DashboardShell from "../components/DashboardShell";
+import DashboardShell from "../components/dashboard/DashboardShell";
+import DashboardActiveMessages from "../components/dashboard/DashboardActiveMessages";
+import DashboardSidebar from "../components/dashboard/DashboardSidebar";
 
 const Dashboard = () => {
   return (
-    <div>
-      <DashboardShell />
-    </div>
+    <DashboardShell
+      sidebar={<DashboardSidebar />}
+      main={<DashboardActiveMessages />}
+    />
   );
 };
 

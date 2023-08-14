@@ -6,7 +6,7 @@ const Navbar = ({ user }) => {
 
   return (
     <nav className="grid grid-cols-10 w-full bg-gray-100 h-fit p-3 drop-shadow-md">
-      <div className="font-vazirmatn font-extralight text-3xl tracking-wide text-blue-900 col-span-4 flex items-center justify-left mx-20">
+      <div className="font-vazirmatn font-extralight text-3xl tracking-wide col-span-4 flex items-center justify-left mx-20">
         مراسلة
       </div>
       <div className="col-span-2"></div>
