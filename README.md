@@ -2,4 +2,6 @@
 
 A real time full stack messaging app.
 
-### 7 days are over. Let's go for 7 more days
+### Built a general outline, Keeping this on hold for now
+
+### First, mastering jwt authenticaton by implementing it properly in all my apps, will later come back here to implement websockets when necessary

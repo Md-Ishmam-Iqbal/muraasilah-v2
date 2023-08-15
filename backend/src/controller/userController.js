@@ -1,12 +1,15 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../../models/userModel.js";
+import { authValidation, registerValidation } from "../utils/userValidation.js";
 
 // @desc   Auth user / set token
 // route   POST api/users/auth
 // @access Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+
+  await authValidation.validate({ email, password });
 
   const user = await User.findOne({ email });
 
@@ -28,6 +31,8 @@ const authUser = asyncHandler(async (req, res) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
+
+  await registerValidation.validate({ email, username, password });
 
   const userExists = await User.findOne({ email });
 

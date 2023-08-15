@@ -25,19 +25,21 @@ const SignUpValidationSchema = Yup.object().shape({
     )
     .max(200, "Password must not exceed 200 characters")
     .required("Required"),
-  confirm_password: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Password does not match")
-    .required("Re-type password"),
-  acceptedTerms: Yup.boolean()
-    .required("Required")
-    .oneOf([true], "Please accept the terms and conditions."),
 });
 
 const SignInValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Please enter a valid email address")
     .required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string()
+    .min(8, "Invalid password")
+    .test("lowercase", "Invalid password", (value) => /[a-z]/.test(value))
+    .test("uppercase", "Invalid password", (value) => /[A-Z]/.test(value))
+    .test("specialSymbol", "Invalid password", (value) =>
+      /[!@#$%^&*]/.test(value)
+    )
+    .max(200, "Password must not exceed 200 characters")
+    .required("Required"),
 });
 
 export { SignUpValidationSchema, SignInValidationSchema };
